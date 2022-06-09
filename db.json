@@ -1,0 +1,32 @@
+{
+  "servers": [
+    {
+      "id": 1,
+      "name": "json-server",
+      "ip_address": "123.123.123.123",
+      "description": "typicode",
+      "status": "true",
+      "last_ping": "2022-06-09T09:31:45+00:00"
+    }
+  ],
+  "cameras": [
+    {
+      "parent_id": 1,
+      "id": 1,
+      "name": "json-server",
+      "ip_address": "123.123.123.123",
+      "description": "typicode",
+      "status": "true",
+      "last_ping": "2022-06-09T09:31:45+00:00"
+    }
+  ],
+  "logs": [
+    {
+      "date": "2022-06-09T09:31:45+00:00"
+    }
+  ],
+  "user": {
+    "username": "admin",
+    "password": "password"
+  }
+}
