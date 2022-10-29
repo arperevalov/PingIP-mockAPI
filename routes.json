@@ -1,4 +1,0 @@
-{
-    "/api/v1/auth/login": "/user",
-    "/api/v1/nodes/": "/servers"
-  }

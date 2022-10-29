@@ -1,0 +1,9 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class CamerasService {
+
+    findAllWithId() {
+        return []
+    }
+}

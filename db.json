@@ -2,23 +2,43 @@
   "servers": [
     {
       "id": 1,
-      "name": "json-server",
+      "name": "Server #1",
       "ip_address": "123.123.123.123",
-      "description": "typicode",
+      "description": "Small description for server",
+      "mac_address": "123.123.123.123",
       "status": "true",
       "last_ping": "2022-06-09T09:31:45+00:00"
     },
     {
-      "name": "awda",
-      "ip_address": "123",
+      "name": "Server #2",
+      "ip_address": "123.123.123.124",
       "description": "",
-      "id": 2
+      "mac_address": "123.123.123.124",
+      "id": 2,
+      "last_ping": "2022-06-09T09:31:45+00:00"
     },
     {
-      "name": "123123",
-      "ip_address": "12313",
+      "name": "Server #3",
+      "ip_address": "123.123.123.125",
       "description": "",
-      "id": 3
+      "mac_address": "123.123.123.126",
+      "id": 3,
+      "last_ping": "2022-06-09T09:31:45+00:00"
+    },
+    {
+      "name": "Server #4",
+      "ip_address": "123.123.123.126",
+      "mac_address": "123.123.123.126",
+      "description": "",
+      "id": 4,
+      "last_ping": "2022-06-09T09:31:45+00:00"
+    },
+    {
+      "name": "qweq",
+      "ip_address": "qweqwe",
+      "mac_address": "qwe",
+      "description": "",
+      "id": 5
     }
   ],
   "cameras": [
@@ -32,16 +52,41 @@
       "last_ping": "2022-06-09T09:31:45+00:00"
     },
     {
-      "name": "123123",
-      "ip_address": "1231",
-      "description": "",
+      "parent_id": 1,
+      "name": "json-server",
+      "ip_address": "123.123.123.123",
+      "description": "typicode",
+      "status": "true",
+      "last_ping": "2022-06-09T09:31:45+00:00",
       "id": 2
     },
     {
-      "name": "awdaw",
-      "ip_address": "1231",
-      "description": "",
+      "parent_id": 2,
+      "name": "json-server",
+      "ip_address": "123.123.123.123",
+      "description": "typicode",
+      "status": "true",
+      "last_ping": "2022-06-09T09:31:45+00:00",
       "id": 3
+    },
+    {
+      "parent_id": 3,
+      "name": "json-server",
+      "ip_address": "123.123.123.123",
+      "description": "typicode",
+      "status": "true",
+      "last_ping": "2022-06-09T09:31:45+00:00",
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "name": "qweqwe",
+      "ip_address": "13123123",
+      "mac_address": "12312312",
+      "description": "123",
+      "id": 6
     }
   ],
   "logs": [
