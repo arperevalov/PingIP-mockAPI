@@ -14,6 +14,19 @@ export class CamerasService {
     })
   }
 
+  async findSingleCamera(parent_id: string, id: string) {
+    return this.prisma.camera.findMany({
+      where: {
+        AND: [
+          {parent_id: parseInt(parent_id)},
+          {id: parseInt(id)}
+        ]
+      }
+    }).then(data => {
+      return data[0]
+    })
+  }
+
   async createCamera(parent_id: string, data) {
     const {name, ip_address, mac_address, description} = data;
     return this.prisma.camera.create({
@@ -62,7 +75,7 @@ export class CamerasService {
                 ]
         }
     }).then(()=> {
-        return this.findAllCamerasWithId(parent_id)
+        return this.findSingleCamera(parent_id, id)
     })
   }
 

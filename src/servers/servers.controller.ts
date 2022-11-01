@@ -1,6 +1,8 @@
+import { PingIpValidationPipe } from './../common/pipes/ping-object-validation.pipe';
 import { ServersService } from './servers.service';
-import { Controller, Delete, Get, Post, Put, Req, Body, Param} from '@nestjs/common';
+import { Controller, Delete, Get, Post, Put, Req, Body, Param, HttpException, UsePipes} from '@nestjs/common';
 import { CamerasService } from 'src/cameras/cameras.service';
+import PingIpObject from 'src/common/interfaces/PingIpObjectInterface';
 
 @Controller('api/v1/nodes/')
 export class ServersController {
@@ -16,7 +18,9 @@ export class ServersController {
     }
 
     @Post()
-    createServer(@Body() body) {
+    createServer(@Body(new PingIpValidationPipe) body: PingIpObject) {
+        // this.testIpPattern(body.ip_address)
+        // this.testIpPattern(body.mac_address)
         return this.serversService.createServer(body)
     }
 
@@ -46,8 +50,7 @@ export class ServersController {
     }
 
     @Post('/:id/clients')
-    createCamera(@Param() params, @Body() body) {
-        const {name, ip_address, mac_address, description} = body;
+    createCamera(@Param() params, @Body(new PingIpValidationPipe) body: PingIpObject) {
         return this.camerasService.createCamera(params.id, body)
     }
 
