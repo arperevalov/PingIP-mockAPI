@@ -2,22 +2,22 @@ version: '2.12.2'
 
 services:
 
-  # api:
-  #   build: 
-  #     dockerfile: Dockerfile
-  #     context: .
-  #     target: development
-  #   restart: always
-  #   volumes:
-  #     - .:/usr/src/app
-  #   env_file:
-  #     - .env
-  #   command: 
-  #     # - npx prisma migrate dev
-  #     - npm run start:dev
-  #   ports:
-  #     - 3001:3001
-
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    restart: always
+    depends_on:
+      - postgres
+    volumes:
+      - .:/nestapp
+    env_file:
+      - .env
+    tty: true
+    ports:
+      - 3000:3000
+      
   postgres:
     image: postgres
     restart: always

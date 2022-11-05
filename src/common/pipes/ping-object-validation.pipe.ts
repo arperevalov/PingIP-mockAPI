@@ -8,7 +8,11 @@ export class PingIpValidationPipe implements PipeTransform {
         || !value.ip_address 
         || !value.mac_address 
         || !value.description ) {
-        throw new HttpException('Not all values included or valid', 400)
+        throw new HttpException({
+          errors: {
+            "Required": "Some required values are empty"
+          }
+        }, 400)
     }
     return value;
   }
