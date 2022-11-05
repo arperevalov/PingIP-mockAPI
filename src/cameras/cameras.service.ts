@@ -28,7 +28,8 @@ export class CamerasService {
   }
 
   async createCamera(parent_id: string, data) {
-    const {name, ip_address, mac_address, description} = data;
+    let {name, ip_address, mac_address, description} = data;
+    if (!description) description = '';
     return this.prisma.camera.create({
         data: {
             name, 
@@ -80,9 +81,14 @@ export class CamerasService {
   }
 
   async updateCamera(parent_id: string, id:string, data) {
+    let {name, ip_address, mac_address, description} = data;
+    if (!description) description = '';
     return this.prisma.camera.updateMany({
         data:{
-            ...data
+            name,
+            ip_address,
+            mac_address,
+            description
           },
         where: {
             AND: [

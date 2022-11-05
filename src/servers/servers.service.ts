@@ -12,10 +12,17 @@ export class ServersService {
     }
 
     async createServer(data) {
-      const {name, ip_address, mac_address, description} = data;
-      const newData = {name, ip_address, mac_address, description, last_ping: new Date().toISOString(), status: true};
+      let {name, ip_address, mac_address, description} = data;
+      if (!description) description = '';
       return this.prisma.server.create({
-        data: newData,
+        data: {
+          name, 
+          ip_address, 
+          mac_address, 
+          description, 
+          last_ping: new Date().toISOString(), 
+          status: true
+        }
       });
     }
 
@@ -48,9 +55,14 @@ export class ServersService {
     }
 
     async updateServer(id: string, data) {
+      let {name, ip_address, mac_address, description} = data;
+      if (!description) description = '';
       return this.prisma.server.update({
         data:{
-          ...data
+          name,
+          ip_address,
+          mac_address,
+          description
         },
         where: {
           id: parseInt(id)

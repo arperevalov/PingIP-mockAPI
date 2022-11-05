@@ -3,4 +3,12 @@ WORKDIR /nestapp
 COPY package*.json ./
 RUN npm install
 COPY . .
-CMD [ "sh", "prisma-migrate.sh" ]
+CMD [ "sh", "docker-start.dev.sh" ]
+
+FROM node:alpine as production
+WORKDIR /nestapp
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+CMD [ "sh", "docker-start.prod.sh" ]

@@ -1,8 +1,8 @@
-import { PingIpValidationPipe } from './../common/pipes/ping-object-validation.pipe';
+import { HttpExceptionFilter } from './../common/filters/http-exception.filter';
 import { ServersService } from './servers.service';
-import { Controller, Delete, Get, Post, Put, Req, Body, Param, HttpException, UsePipes} from '@nestjs/common';
+import { Controller, Delete, Get, Post, Put, Body, Param, UsePipes, ValidationPipe, UseFilters} from '@nestjs/common';
 import { CamerasService } from 'src/cameras/cameras.service';
-import PingIpObject from 'src/common/interfaces/PingIpObjectInterface';
+import { CreactePingIpDto } from 'src/common/dto/create-ping-ip.dto';
 
 @Controller('api/v1/nodes/')
 export class ServersController {
@@ -18,9 +18,9 @@ export class ServersController {
     }
 
     @Post()
-    createServer(@Body(new PingIpValidationPipe) body: PingIpObject) {
-        // this.testIpPattern(body.ip_address)
-        // this.testIpPattern(body.mac_address)
+    @UseFilters(new HttpExceptionFilter())
+    @UsePipes(new ValidationPipe())
+    createServer(@Body() body: CreactePingIpDto) {
         return this.serversService.createServer(body)
     }
 
@@ -35,7 +35,9 @@ export class ServersController {
     }
 
     @Put('/:id')
-    updateServer(@Param() params, @Body() body){
+    @UseFilters(new HttpExceptionFilter())
+    @UsePipes(new ValidationPipe())
+    updateServer(@Param() params, @Body() body: CreactePingIpDto){
         return this.serversService.updateServer(params.id, body);
     }
 
@@ -50,7 +52,9 @@ export class ServersController {
     }
 
     @Post('/:id/clients')
-    createCamera(@Param() params, @Body(new PingIpValidationPipe) body: PingIpObject) {
+    @UseFilters(new HttpExceptionFilter())
+    @UsePipes(new ValidationPipe())
+    createCamera(@Param() params, @Body() body: CreactePingIpDto) {
         return this.camerasService.createCamera(params.id, body)
     }
 
@@ -65,7 +69,9 @@ export class ServersController {
     }
 
     @Put('/:parent_id/clients/:id')
-    updateCamera(@Param() params, @Body() body){
+    @UseFilters(new HttpExceptionFilter())
+    @UsePipes(new ValidationPipe())
+    updateCamera(@Param() params, @Body() body: CreactePingIpDto){
         return this.camerasService.updateCamera(params.parent_id, params.id, body);
     }
 

@@ -2,7 +2,7 @@ version: '2.12.2'
 
 services:
 
-  api:
+  api-dev:
     build: 
       context: .
       dockerfile: Dockerfile
