@@ -1,9 +1,11 @@
+import { JwtAuthGuard } from './../common/guards/jwt-auth.guard';
 import { HttpExceptionFilter } from './../common/filters/http-exception.filter';
 import { ServersService } from './servers.service';
-import { Controller, Delete, Get, Post, Put, Body, Param, UsePipes, ValidationPipe, UseFilters} from '@nestjs/common';
+import { Controller, Delete, Get, Post, Put, Body, Param, UsePipes, ValidationPipe, UseFilters, UseGuards } from '@nestjs/common';
 import { CamerasService } from 'src/cameras/cameras.service';
 import { CreactePingIpDto } from 'src/common/dto/create-ping-ip.dto';
 
+@UseGuards(JwtAuthGuard)
 @Controller('api/v1/nodes/')
 export class ServersController {
 

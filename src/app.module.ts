@@ -5,9 +5,11 @@ import { AppService } from './app.service';
 import { ServersController } from './servers/servers.controller';
 import { ServersService } from './servers/servers.service';
 import { CamerasService } from './cameras/cameras.service';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [],
+  imports: [AuthModule, UsersModule],
   controllers: [AppController, ServersController],
   providers: [PrismaService, AppService, ServersService, CamerasService],
 })

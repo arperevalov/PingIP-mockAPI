@@ -17,7 +17,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
             data[i] = messages[i]
         }
     }
-    
+
 
     response
       .status(status)

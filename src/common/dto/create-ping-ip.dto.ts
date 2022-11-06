@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsIP } from "class-validator";
+import { IsNotEmpty, IsIP, IsOptional } from "class-validator";
 
 export class CreactePingIpDto {
     @IsNotEmpty()
@@ -12,6 +12,6 @@ export class CreactePingIpDto {
     @IsIP()
     readonly mac_address: string;
     
-    
+    @IsOptional()
     readonly description: string;
 }
