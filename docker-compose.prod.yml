@@ -17,7 +17,7 @@ services:
       - .env
     tty: true
     ports:
-      - 3000:3000
+      - ${DOCKER_APP_PORT}:3000
       
   postgres:
     image: postgres
@@ -27,4 +27,4 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: pingip
     ports:
-      - '5432:5432'
+      - '${DOCKER_POSTGRESS_PORT}:5432'
