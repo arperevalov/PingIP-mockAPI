@@ -12,6 +12,7 @@ services:
       - postgres
     volumes:
       - .:/nestapp
+      - /nestapp/node_modules
     env_file:
       - .env
     tty: true
