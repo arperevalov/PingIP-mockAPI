@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsIP, IsOptional } from "class-validator";
+import { IsMacAddress } from "../validators/isMacAddress";
 
 export class CreactePingIpDto {
     @IsNotEmpty()
@@ -9,7 +10,9 @@ export class CreactePingIpDto {
     readonly ip_address: string;
     
     @IsNotEmpty()
-    @IsIP()
+    @IsMacAddress({
+        message: 'Value should be mac-address',
+      })
     readonly mac_address: string;
     
     @IsOptional()

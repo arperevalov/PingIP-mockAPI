@@ -5,7 +5,7 @@ import { Controller, Delete, Get, Post, Put, Body, Param, UsePipes, ValidationPi
 import { CamerasService } from 'src/cameras/cameras.service';
 import { CreactePingIpDto } from 'src/common/dto/create-ping-ip.dto';
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 @Controller('api/v1/nodes/')
 export class ServersController {
 
